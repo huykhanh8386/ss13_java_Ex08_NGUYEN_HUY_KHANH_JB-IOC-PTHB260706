@@ -1,0 +1,20 @@
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class ProductCache {
+    private Map<String, Product> productMap = new HashMap<>();
+    public void loadData(List<Product> products) {
+        for (Product p : products) {
+            productMap.put(p.getBarcode(), p);
+        }
+    }
+    public Product findByBarcode(String barcode) {
+        Product product = productMap.get(barcode);
+        if (product == null) {
+            System.out.println("Sản phẩm không tồn tại");
+            return null;
+        }
+        return product;
+    }
+}
